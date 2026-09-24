@@ -996,7 +996,7 @@ rules!:
   - RULE-SET,ACL_YOUTUBE,🌍 国外媒体  
   - RULE-SET,ACL_MEDIA,🌍 国外媒体
   
-  - RULE-SET,ACL_PROXY,Proxy
+  - RULE-SET,ACL_PROXY,🚀 节点选择
 
   - RULE-SET,ACL_CN,DIRECT
   - GEOIP,CN,DIRECT
