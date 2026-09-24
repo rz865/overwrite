@@ -576,3 +576,206 @@ DISABLE_QUIC_GO_GSO = 1
 DELAY_START = 0
 SKIP_PROXY_ADDRESS = 1
 RESTART = false
+
+# ====================================================================
+# YAML 配置文件覆写区块
+# ====================================================================
+[YAML]
+
+# --------------------------------------------------------------------
+# 1. 基础 DNS 覆写（开启 Fake-IP 与国内外 DNS 分流）
+# --------------------------------------------------------------------
+dns:
+  enable: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  +nameserver:
+    - 'https://doh.pub/dns-query'       # 腾讯 DoH
+    - 'https://dns.alidns.com/dns-query' # 阿里 DoH
+  +fallback:
+    - 'https://dns.google/dns-query'    # Google 加密 DNS
+    - 'https://1.1.1.1/dns-query'       # Cloudflare 加密 DNS
+
+# --------------------------------------------------------------------
+# 2. 策略组重写 (proxy-groups!) - 采用英文感叹号 ! 强制替换原有所有分组
+# --------------------------------------------------------------------
+proxy-groups!:
+  # 【主选择器】：手动切换策略，可切换自动选择或特定地区
+  - name: 🚀 节点选择
+    type: select
+    proxies:
+      - ⚡ 自动选择
+      - 🇭🇰 香港节点
+      - 🇯🇵 日本节点
+      - 🇹🇼 台湾节点
+      - 🇸🇬 新加坡节点
+      - 🇺🇸 美国节点
+      - 🌐 其它地区
+      - DIRECT
+
+  # 【自动选择】：全节点延迟测速，自动切换至最低延迟节点
+  - name: ⚡ 自动选择
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300                       # 每 300 秒测速一次
+    tolerance: 50                       # 容忍度 50ms（防频繁断连切换）
+    include-all-proxies: true
+
+  # 【流媒体专线】：用于 影音/Google/AI 等特定需求
+  - name: 🎬 境外流媒体
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - 🇭🇰 香港节点
+      - 🇯🇵 日本节点
+      - 🇹🇼 台湾节点
+      - 🇸🇬 新加坡节点
+      - 🇺🇸 美国节点
+
+  # 【广告拦截】
+  - name: 🛑 🛑 广告拦截
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
+
+  # ----------------- 按常见地区自动分类分组 -----------------
+  # 利用 include-all-proxies + filter 正则筛选节点名称，免去手动维护
+  - name: 🇭🇰 香港节点
+    type: select
+    include-all-proxies: true
+    filter: "(?i)香港|HK|HongKong"
+
+  - name: 🇯🇵 日本节点
+    type: select
+    include-all-proxies: true
+    filter: "(?i)日本|JP|Japan"
+
+  - name: 🇹🇼 台湾节点
+    type: select
+    include-all-proxies: true
+    filter: "(?i)台湾|TW|Taiwan"
+
+  - name: 🇸🇬 新加坡节点
+    type: select
+    include-all-proxies: true
+    filter: "(?i)新加坡|SG|Singapore"
+
+  - name: 🇺🇸 美国节点
+    type: select
+    include-all-proxies: true
+    filter: "(?i)美国|US|United States"
+
+  # 匹配排除上述主要地区后的其余节点（如韩国、欧洲、英国等）
+  - name: 🌐 其它地区
+    type: select
+    include-all-proxies: true
+    filter: "(?i)exclude:(香港|HK|HongKong|日本|JP|Japan|台湾|TW|Taiwan|新加坡|SG|Singapore|美国|US|United States)"
+
+# --------------------------------------------------------------------
+# 3. 远程规则集配置 (rule-providers) - 引用 Loyalsoldier 高品质规则库
+# --------------------------------------------------------------------
+rule-providers:
+  # 广告域名列表
+  reject:
+    type: http
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/reject.txt"
+    path: ./ruleset/reject.yaml
+    interval: 86400                     # 每天自动更新
+
+  # iCloud 服务
+  icloud:
+    type: http
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/icloud.txt"
+    path: ./ruleset/icloud.yaml
+    interval: 86400
+
+  # Apple 专有服务
+  apple:
+    type: http
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/apple.txt"
+    path: ./ruleset/apple.yaml
+    interval: 86400
+
+  # Google 服务（单独拆出方便定向分配）
+  google:
+    type: http
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/google.txt"
+    path: ./ruleset/google.yaml
+    interval: 86400
+
+  # GFW 被墙域名黑名单（精准走代理，省流量）
+  gfw:
+    type: http
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/gfw.txt"
+    path: ./ruleset/gfw.yaml
+    interval: 86400
+
+  # 国外常用未被墙但建议代理的网站列表
+  proxy:
+    type: http
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/proxy.txt"
+    path: ./ruleset/proxy.yaml
+    interval: 86400
+
+  # 国内直连域名列表
+  direct:
+    type: http
+    behavior: domain
+    url: "https://fastly.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/direct.txt"
+    path: ./ruleset/direct.yaml
+    interval: 86400
+
+  # Telegram 专用 IP 段
+  telegramcidr:
+    type: http
+    behavior: ipcidr
+    url: "https://fastly.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/telegramcidr.txt"
+    path: ./ruleset/telegramcidr.yaml
+    interval: 86400
+
+  # 中国大陆 CIDR IP 列表
+  cncidr:
+    type: http
+    behavior: ipcidr
+    url: "https://fastly.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/cncidr.txt"
+    path: ./ruleset/cncidr.yaml
+    interval: 86400
+
+# --------------------------------------------------------------------
+# 4. 路由规则匹配 (rules!) - 采用感叹号 ! 清空并完全替代原静态规则
+# --------------------------------------------------------------------
+rules!:
+  # 局域网地址直连 (no-resolve 避免无谓的 DNS 解析)
+  - GEOIP,lan,DIRECT,no-resolve
+
+  # 命中广告库，走广告拦截组
+  - RULE-SET,reject,🛑 广告拦截
+
+  # 苹果/iCloud 专有域名直连加速
+  - RULE-SET,icloud,DIRECT
+  - RULE-SET,apple,DIRECT
+
+  # Google 流量指向【🎬 境外流媒体】或【🚀 节点选择】
+  - RULE-SET,google,🚀 节点选择
+
+  # Telegram 流量按 IP 分流，指向节点
+  - RULE-SET,telegramcidr,🚀 节点选择,no-resolve
+
+  # 被墙域名 & 常用海外网站走代理
+  - RULE-SET,gfw,🚀 节点选择
+  - RULE-SET,proxy,🚀 节点选择
+
+  # 国内域名 & 大陆 IP 直连
+  - RULE-SET,direct,DIRECT
+  - RULE-SET,cncidr,DIRECT,no-resolve
+  - GEOIP,CN,DIRECT
+
+  # 兜底规则：未匹配到上述任何规则的流量，走直连 (匹配 GFW 黑名单模式的最佳配置)
+  - MATCH,DIRECT
