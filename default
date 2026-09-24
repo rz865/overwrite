@@ -633,7 +633,7 @@ proxy-groups!:
       - 🇺🇸 美国节点
 
   # 【广告拦截】
-  - name: 🛑 🛑 广告拦截
+  - name: 🛑 广告拦截
     type: select
     proxies:
       - REJECT
