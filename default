@@ -785,33 +785,28 @@ proxy-groups!:
   # 利用 include-all-proxies + filter 正则筛选节点名称，免去手动维护
   - name: 🇭🇰 香港节点
     type: select
-    use:
-      - default
-    filter: "(?i)香港|HK|HongKong"
+    include-all: true
+    filter: '(?i)🇭🇰|香港|港|(?:^|[^a-z])HK(?:$|[^a-z])|Hong[ -]?Kong'
 
   - name: 🇯🇵 日本节点
     type: select
-    use:
-      - default
-    filter: "(?i)日本|JP|Japan"
+    include-all: true
+    filter: '(?i)🇯🇵|日本|东京|大阪|(?:^|[^a-z])JP(?:$|[^a-z])|Japan'
 
   - name: 🇹🇼 台湾节点
     type: select
-    use:
-      - default
-    filter: "(?i)台湾|TW|Taiwan"
+    include-all: true
+    filter: '(?i)🇹🇼|台湾|臺灣|台北|(?:^|[^a-z])TW(?:$|[^a-z])|Taiwan'
 
   - name: 🇸🇬 新加坡节点
     type: select
-    use:
-      - default
-    filter: "(?i)新加坡|SG|Singapore"
+    include-all: true
+    filter: '(?i)🇸🇬|新加坡|狮城|(?:^|[^a-z])SG(?:$|[^a-z])|Singapore'
 
   - name: 🇺🇸 美国节点
     type: select
-    use:
-      - default
-    filter: "(?i)美国|US|United States"
+    include-all: true
+    filter: '(?i)🇺🇸|美国|美西|美东|洛杉矶|纽约|(?:^|[^a-z])US(?:$|[^a-z])|United[ -]?States'
 
   # 匹配排除上述主要地区后的其余节点（如韩国、欧洲、英国等）
   - name: 🌐 其它地区
