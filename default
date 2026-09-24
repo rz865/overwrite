@@ -600,7 +600,6 @@ dns:
 # 2. 策略组重写 (proxy-groups!) - 采用英文感叹号 ! 强制替换原有所有分组
 # --------------------------------------------------------------------
 proxy-groups!:
-  # 【主选择器】：手动切换策略，可切换自动选择或特定地区
   - name: 🚀 节点选择
     type: select
     proxies:
@@ -613,7 +612,6 @@ proxy-groups!:
       - 🌐 其它地区
       - DIRECT
 
-  # 【自动选择】：全节点延迟测速，自动切换至最低延迟节点
   - name: ⚡ 自动选择
     type: url-test
     url: http://www.gstatic.com/generate_204
@@ -621,18 +619,162 @@ proxy-groups!:
     tolerance: 50                       # 容忍度 50ms（防频繁断连切换）
     include-all-proxies: true
 
-  # 【流媒体专线】：用于 影音/Google/AI 等特定需求
-  - name: 🎬 境外流媒体
+  - name: 🤖 OPENAI
     type: select
     proxies:
-      - 🚀 节点选择
+      - ⚡ 自动选择
       - 🇭🇰 香港节点
       - 🇯🇵 日本节点
       - 🇹🇼 台湾节点
       - 🇸🇬 新加坡节点
       - 🇺🇸 美国节点
+      - 🌐 其它地区
+      - DIRECT
 
-  # 【广告拦截】
+  - name: 🤖 国外AI
+    type: select
+    proxies:
+      - ⚡ 自动选择
+      - 🇭🇰 香港节点
+      - 🇯🇵 日本节点
+      - 🇹🇼 台湾节点
+      - 🇸🇬 新加坡节点
+      - 🇺🇸 美国节点
+      - 🌐 其它地区
+      - DIRECT
+
+  - name: 📹 YouTube
+    type: select
+    proxies:
+      - ⚡ 自动选择
+      - 🇭🇰 香港节点
+      - 🇯🇵 日本节点
+      - 🇹🇼 台湾节点
+      - 🇸🇬 新加坡节点
+      - 🇺🇸 美国节点
+      - 🌐 其它地区
+      - DIRECT
+
+  - name: 🌍 国外媒体
+    type: select
+    proxies:
+      - ⚡ 自动选择
+      - 🇭🇰 香港节点
+      - 🇯🇵 日本节点
+      - 🇹🇼 台湾节点
+      - 🇸🇬 新加坡节点
+      - 🇺🇸 美国节点
+      - 🌐 其它地区
+      - DIRECT
+
+  - name: 📲 电报信息
+    type: select
+    proxies:
+      - ⚡ 自动选择
+      - 🇭🇰 香港节点
+      - 🇯🇵 日本节点
+      - 🇹🇼 台湾节点
+      - 🇸🇬 新加坡节点
+      - 🇺🇸 美国节点
+      - 🌐 其它地区
+      - DIRECT
+
+  - name: 🐬 OneDrive
+    type: select
+    proxies:
+      - ⚡ 自动选择
+      - 🇭🇰 香港节点
+      - 🇯🇵 日本节点
+      - 🇹🇼 台湾节点
+      - 🇸🇬 新加坡节点
+      - 🇺🇸 美国节点
+      - 🌐 其它地区
+      - DIRECT
+
+  - name: 🪟 微软服务
+    type: select
+    proxies:
+      - ⚡ 自动选择
+      - 🇭🇰 香港节点
+      - 🇯🇵 日本节点
+      - 🇹🇼 台湾节点
+      - 🇸🇬 新加坡节点
+      - 🇺🇸 美国节点
+      - 🌐 其它地区
+      - DIRECT
+
+  - name: 🍎 icloud
+    type: select
+    proxies:
+      - ⚡ 自动选择
+      - 🇭🇰 香港节点
+      - 🇯🇵 日本节点
+      - 🇹🇼 台湾节点
+      - 🇸🇬 新加坡节点
+      - 🇺🇸 美国节点
+      - 🌐 其它地区
+      - DIRECT
+
+  - name: 🍎 苹果服务
+    type: select
+    proxies:
+      - ⚡ 自动选择
+      - 🇭🇰 香港节点
+      - 🇯🇵 日本节点
+      - 🇹🇼 台湾节点
+      - 🇸🇬 新加坡节点
+      - 🇺🇸 美国节点
+      - 🌐 其它地区
+      - DIRECT
+
+  - name: 🎮 Epic游戏
+    type: select
+    proxies:
+      - ⚡ 自动选择
+      - 🇭🇰 香港节点
+      - 🇯🇵 日本节点
+      - 🇹🇼 台湾节点
+      - 🇸🇬 新加坡节点
+      - 🇺🇸 美国节点
+      - 🌐 其它地区
+      - DIRECT
+
+  - name: 🎮 Steam游戏
+    type: select
+    proxies:
+      - ⚡ 自动选择
+      - 🇭🇰 香港节点
+      - 🇯🇵 日本节点
+      - 🇹🇼 台湾节点
+      - 🇸🇬 新加坡节点
+      - 🇺🇸 美国节点
+      - 🌐 其它地区
+      - DIRECT
+
+  - name: 🎮 Steam游戏CN
+    type: select
+    proxies:
+      - ⚡ 自动选择
+      - 🇭🇰 香港节点
+      - 🇯🇵 日本节点
+      - 🇹🇼 台湾节点
+      - 🇸🇬 新加坡节点
+      - 🇺🇸 美国节点
+      - 🌐 其它地区
+      - DIRECT
+
+  - name: 🐟 漏网之鱼
+    type: select
+    proxies:
+      - ⚡ 自动选择
+      - 🇭🇰 香港节点
+      - 🇯🇵 日本节点
+      - 🇹🇼 台湾节点
+      - 🇸🇬 新加坡节点
+      - 🇺🇸 美国节点
+      - 🌐 其它地区
+      - DIRECT
+
   - name: 🛑 广告拦截
     type: select
     proxies:
@@ -676,60 +818,49 @@ proxy-groups!:
 # 3. 远程规则集配置 (rule-providers) - 引用 Loyalsoldier 高品质规则库
 # --------------------------------------------------------------------
 rule-providers:
+  # 本地网络
+  ACL_LAN:
+    type: http
+    behavior: classical
+    format: text
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/LocalAreaNetwork.list
+    path: ./ruleset/acl_lan.yaml
+    interval: 86400
+
   # 广告域名列表
-  reject:
+  ACL_AD:
+    type: http
+    behavior: classical
+    format: text
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanAD.list
+    path: ./ruleset/acl_ad.yaml
+    interval: 86400
+  
+  # OPENAI
+  META_OPENAI:
     type: http
     behavior: domain
-    url: "https://fastly.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/reject.txt"
-    path: ./ruleset/reject.yaml
-    interval: 86400                     # 每天自动更新
-
-  # iCloud 服务
-  icloud:
-    type: http
-    behavior: domain
-    url: "https://fastly.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/icloud.txt"
-    path: ./ruleset/icloud.yaml
+    format: mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/openai.mrs
+    path: ./ruleset/meta_openai.mrs
     interval: 86400
 
-  # Apple 专有服务
-  apple:
+  # 国外ai
+  META_FOREIGN_AI:
     type: http
     behavior: domain
-    url: "https://fastly.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/apple.txt"
-    path: ./ruleset/apple.yaml
+    format: mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-!cn.mrs
+    path: ./ruleset/meta_foreign_ai.mrs
     interval: 86400
 
-  # Google 服务（单独拆出方便定向分配）
-  google:
+  # 电报信息
+  ACL_TELEGRAM:
     type: http
-    behavior: domain
-    url: "https://fastly.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/google.txt"
-    path: ./ruleset/google.yaml
-    interval: 86400
-
-  # GFW 被墙域名黑名单（精准走代理，省流量）
-  gfw:
-    type: http
-    behavior: domain
-    url: "https://fastly.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/gfw.txt"
-    path: ./ruleset/gfw.yaml
-    interval: 86400
-
-  # 国外常用未被墙但建议代理的网站列表
-  proxy:
-    type: http
-    behavior: domain
-    url: "https://fastly.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/proxy.txt"
-    path: ./ruleset/proxy.yaml
-    interval: 86400
-
-  # 国内直连域名列表
-  direct:
-    type: http
-    behavior: domain
-    url: "https://fastly.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/direct.txt"
-    path: ./ruleset/direct.yaml
+    behavior: classical
+    format: text
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Telegram.list
+    path: ./ruleset/acl_telegram.yaml
     interval: 86400
 
   # Telegram 专用 IP 段
@@ -740,42 +871,134 @@ rule-providers:
     path: ./ruleset/telegramcidr.yaml
     interval: 86400
 
-  # 中国大陆 CIDR IP 列表
-  cncidr:
+  # one drive
+  ACL_ONEDRIVE:
     type: http
-    behavior: ipcidr
-    url: "https://fastly.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/cncidr.txt"
-    path: ./ruleset/cncidr.yaml
+    behavior: classical
+    format: text
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/OneDrive.list
+    path: ./ruleset/acl_onedrive.yaml
     interval: 86400
+
+  # 微软服务
+  ACL_MICROSOFT:
+    type: http
+    behavior: classical
+    format: text
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Microsoft.list
+    path: ./ruleset/acl_microsoft.yaml
+    interval: 86400
+
+  # icloud
+  META_ICLOUD:
+    type: http
+    behavior: domain
+    format: mrs
+    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/icloud.mrs
+    path: ./ruleset/meta_icloud.mrs
+    interval: 86400
+
+  # 苹果服务
+  ACL_APPLE:
+    type: http
+    behavior: classical
+    format: text
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Apple.list
+    path: ./ruleset/acl_apple.yaml
+    interval: 86400
+
+  # epic游戏
+  ACL_EPIC:
+    type: http
+    behavior: classical
+    format: text
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Epic.list
+    path: ./ruleset/acl_epic.yaml
+    interval: 86400
+
+  # steam中国
+  ACL_STEAM_CN:
+    type: http
+    behavior: classical
+    format: text
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/SteamCN.list
+    path: ./ruleset/acl_steam_cn.yaml
+    interval: 86400
+
+  # steam游戏
+  ACL_STEAM:
+    type: http
+    behavior: classical
+    format: text
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Steam.list
+    path: ./ruleset/acl_steam.yaml
+    interval: 86400
+
+  # 油管
+  ACL_YOUTUBE:
+    type: http
+    behavior: classical
+    format: text
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/YouTube.list
+    path: ./ruleset/acl_youtube.yaml
+    interval: 86400
+
+  # 国外媒体
+  ACL_MEDIA:
+    type: http
+    behavior: classical
+    format: text
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyMedia.list
+    path: ./ruleset/acl_media.yaml
+    interval: 86400
+
+  # 中国域名
+  ACL_CN:
+    type: http
+    behavior: classical
+    format: text
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaDomain.list
+    path: ./ruleset/acl_cn.yaml
+    interval: 86400
+
+  # 需要代理的
+  ACL_PROXY:
+    type: http
+    behavior: classical
+    format: text
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyLite.list
+    path: ./ruleset/acl_proxy.yaml
+    interval: 86400
+
 
 # --------------------------------------------------------------------
 # 4. 路由规则匹配 (rules!) - 采用感叹号 ! 清空并完全替代原静态规则
 # --------------------------------------------------------------------
 rules!:
-  # 局域网地址直连 (no-resolve 避免无谓的 DNS 解析)
-  - GEOIP,lan,DIRECT,no-resolve
+  - RULE-SET,ACL_LAN,DIRECT
+  - RULE-SET,ACL_AD,🛑 广告拦截
 
-  # 命中广告库，走广告拦截组
-  - RULE-SET,reject,🛑 广告拦截
+  - RULE-SET,META_OPENAI,🤖 OPENAI
+  - RULE-SET,META_FOREIGN_AI,🤖 国外AI
 
-  # 苹果/iCloud 专有域名直连加速
-  - RULE-SET,icloud,DIRECT
-  - RULE-SET,apple,DIRECT
+  - RULE-SET,ACL_TELEGRAM,📲 电报信息
+  - RULE-SET,telegramcidr,📲 电报信息
 
-  # Google 流量指向【🎬 境外流媒体】或【🚀 节点选择】
-  - RULE-SET,google,🚀 节点选择
+  - RULE-SET,ACL_ONEDRIVE,🐬 OneDrive
+  - RULE-SET,ACL_MICROSOFT,🪟 微软服务
+  - RULE-SET,META_ICLOUD,🍎 icloud
+  - RULE-SET,ACL_APPLE,🍎 苹果服务
 
-  # Telegram 流量按 IP 分流，指向节点
-  - RULE-SET,telegramcidr,🚀 节点选择,no-resolve
+  - RULE-SET,ACL_EPIC,🎮 Epic游戏
+  - RULE-SET,ACL_STEAM_CN,🎮 Steam游戏CN
+  - RULE-SET,ACL_STEAM,🎮 Steam游戏
 
-  # 被墙域名 & 常用海外网站走代理
-  - RULE-SET,gfw,🚀 节点选择
-  - RULE-SET,proxy,🚀 节点选择
+  - RULE-SET,ACL_YOUTUBE,🌍 国外媒体  
+  - RULE-SET,ACL_MEDIA,🌍 国外媒体
+  
+  - RULE-SET,ACL_PROXY,Proxy
 
-  # 国内域名 & 大陆 IP 直连
-  - RULE-SET,direct,DIRECT
-  - RULE-SET,cncidr,DIRECT,no-resolve
+  - RULE-SET,ACL_CN,DIRECT
   - GEOIP,CN,DIRECT
 
-  # 兜底规则：未匹配到上述任何规则的流量，走直连 (匹配 GFW 黑名单模式的最佳配置)
-  - MATCH,DIRECT
+  - MATCH,🐟 漏网之鱼
