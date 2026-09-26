@@ -978,7 +978,7 @@ rules!:
   - DOMAIN-SUFFIX,abcnode.top,DIRECT
   - DOMAIN,lp.bb4455.top,DIRECT
   - DOMAIN-KEYWORD,okx,🚀 节点选择
-  - IP-CIDR,45.82.121.15/24,DIRECT
+  - IP-CIDR,45.82.121.15/24,DIRECT,no-resolve
 
   - RULE-SET,ACL_LAN,DIRECT
   - RULE-SET,ACL_AD,🛑 广告拦截
@@ -987,7 +987,7 @@ rules!:
   - RULE-SET,META_FOREIGN_AI,🤖 国外AI
 
   - RULE-SET,ACL_TELEGRAM,📲 电报信息
-  - RULE-SET,telegramcidr,📲 电报信息
+  - RULE-SET,telegramcidr,📲 电报信息,no-resolve
 
   - RULE-SET,ACL_ONEDRIVE,🐬 OneDrive
   - RULE-SET,ACL_MICROSOFT,🪟 微软服务
