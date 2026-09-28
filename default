@@ -603,6 +603,9 @@ dns:
   fallback!:
     - https://dns.google/dns-query
     - https://1.1.1.1/dns-query
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
 
 # --------------------------------------------------------------------
 # 2. 策略组重写 (proxy-groups!) - 采用英文感叹号 ! 强制替换原有所有分组
