@@ -822,7 +822,7 @@ proxy-groups!:
   # 匹配排除上述主要地区后的其余节点（如韩国、欧洲、英国等）
   - name: 🌐 其它地区
     type: select
-    include-all-proxies: true
+    include-all: true
     filter: "(?i)exclude:(香港|HK|HongKong|日本|JP|Japan|台湾|TW|Taiwan|新加坡|SG|Singapore|美国|US|United States)"
 
 # --------------------------------------------------------------------
