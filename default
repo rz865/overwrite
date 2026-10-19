@@ -1016,6 +1016,6 @@ rules!:
   - RULE-SET,ACL_PROXY,🚀 节点选择
 
   - RULE-SET,ACL_CN,DIRECT
-  - GEOIP,CN,DIRECT
+  - GEOIP,CN,DIRECT,no-resolve
 
   - MATCH,🐟 漏网之鱼
