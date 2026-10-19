@@ -586,26 +586,27 @@ RESTART = false
 # 1. 基础 DNS 覆写（开启 Fake-IP 与国内外 DNS 分流）
 # --------------------------------------------------------------------
 dns:
+  # 1. 引导 DNS：纯 IP，用于引导后续加密 DNS 的解析
   default-nameserver!:
     - 119.29.29.29
     - 223.5.5.5
+  # 2. 常规 nameserver：用于国内、直连或未命中 fake-ip-filter 的域名解析
+  # 在 Fake-IP 模式下，大部分流量走 Fake-IP，这里的 nameserver 主要服务于直连域名
   nameserver!:
     - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
-    - 119.29.29.29
-    - 223.5.5.5
+  # 3. 核心防线：专门解析代理节点域名的 DNS（绝不能走代理，必须走直连或引导 DNS
   proxy-server-nameserver!:
-    - https://223.5.5.5/dns-query
-    - https://doh.pub/dns-query
-  direct-nameserver!:
-    #- https://dns.alidns.com/dns-query
     - 223.5.5.5
-  fallback!:
-    - https://dns.google/dns-query
-    - https://1.1.1.1/dns-query
-  fallback-filter:
-    geoip: true
-    geoip-code: CN
+    - 119.29.29.29
+  direct-nameserver!:
+    - 223.5.5.5
+  # 4. 精准策略：国内直连域名使用国内加密 DNS
+  nameserver-policy!:
+    "geosite:cn":
+      - https://dns.alidns.com/dns-query
+      - https://doh.pub/dns-query
+  # 5. fake-ip-filter必须配置：跳过 Fake-IP 的域名白名单（极为关键）
 
 # --------------------------------------------------------------------
 # 2. 策略组重写 (proxy-groups!) - 采用英文感叹号 ! 强制替换原有所有分组
