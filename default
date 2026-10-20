@@ -655,17 +655,17 @@ proxy-groups!:
       - 🌐 其它地区
       - DIRECT
 
-  - name: 📹 YouTube
-    type: select
-    proxies:
-      - ⚡ 自动选择
-      - 🇭🇰 香港节点
-      - 🇯🇵 日本节点
-      - 🇹🇼 台湾节点
-      - 🇸🇬 新加坡节点
-      - 🇺🇸 美国节点
-      - 🌐 其它地区
-      - DIRECT
+  #- name: 📹 YouTube
+  #  type: select
+  #  proxies:
+  #    - ⚡ 自动选择
+  #    - 🇭🇰 香港节点
+  #    - 🇯🇵 日本节点
+  #    - 🇹🇼 台湾节点
+  #    - 🇸🇬 新加坡节点
+  #    - 🇺🇸 美国节点
+  #    - 🌐 其它地区
+  #    - DIRECT
 
   - name: 🌍 国外媒体
     type: select
@@ -679,17 +679,17 @@ proxy-groups!:
       - 🌐 其它地区
       - DIRECT
 
-  - name: 📲 电报信息
-    type: select
-    proxies:
-      - ⚡ 自动选择
-      - 🇭🇰 香港节点
-      - 🇯🇵 日本节点
-      - 🇹🇼 台湾节点
-      - 🇸🇬 新加坡节点
-      - 🇺🇸 美国节点
-      - 🌐 其它地区
-      - DIRECT
+  #- name: 📲 电报信息
+  #  type: select
+  #  proxies:
+  #    - ⚡ 自动选择
+  #    - 🇭🇰 香港节点
+  #    - 🇯🇵 日本节点
+  #    - 🇹🇼 台湾节点
+  #    - 🇸🇬 新加坡节点
+  #    - 🇺🇸 美国节点
+  #    - 🌐 其它地区
+  #    - DIRECT
 
   - name: 🐬 OneDrive
     type: select
@@ -739,41 +739,41 @@ proxy-groups!:
   #    - 🌐 其它地区
   #    - DIRECT
 
-  - name: 🎮 Epic游戏
-    type: select
-    proxies:
-      - ⚡ 自动选择
-      - 🇭🇰 香港节点
-      - 🇯🇵 日本节点
-      - 🇹🇼 台湾节点
-      - 🇸🇬 新加坡节点
-      - 🇺🇸 美国节点
-      - 🌐 其它地区
-      - DIRECT
+  #- name: 🎮 Epic游戏
+  #  type: select
+  #  proxies:
+  #    - ⚡ 自动选择
+  #    - 🇭🇰 香港节点
+  #    - 🇯🇵 日本节点
+  #    - 🇹🇼 台湾节点
+  #    - 🇸🇬 新加坡节点
+  #    - 🇺🇸 美国节点
+  #    - 🌐 其它地区
+  #    - DIRECT
 
-  - name: 🎮 Steam游戏
-    type: select
-    proxies:
-      - ⚡ 自动选择
-      - 🇭🇰 香港节点
-      - 🇯🇵 日本节点
-      - 🇹🇼 台湾节点
-      - 🇸🇬 新加坡节点
-      - 🇺🇸 美国节点
-      - 🌐 其它地区
-      - DIRECT
+  #- name: 🎮 Steam游戏
+  #  type: select
+  #  proxies:
+  #    - ⚡ 自动选择
+  #    - 🇭🇰 香港节点
+  #    - 🇯🇵 日本节点
+  #    - 🇹🇼 台湾节点
+  #    - 🇸🇬 新加坡节点
+  #    - 🇺🇸 美国节点
+  #    - 🌐 其它地区
+  #    - DIRECT
 
-  - name: 🎮 Steam游戏CN
-    type: select
-    proxies:
-      - ⚡ 自动选择
-      - 🇭🇰 香港节点
-      - 🇯🇵 日本节点
-      - 🇹🇼 台湾节点
-      - 🇸🇬 新加坡节点
-      - 🇺🇸 美国节点
-      - 🌐 其它地区
-      - DIRECT
+  #- name: 🎮 Steam游戏CN
+  #  type: select
+  #  proxies:
+  #    - ⚡ 自动选择
+  #    - 🇭🇰 香港节点
+  #    - 🇯🇵 日本节点
+  #    - 🇹🇼 台湾节点
+  #    - 🇸🇬 新加坡节点
+  #    - 🇺🇸 美国节点
+  #    - 🌐 其它地区
+  #    - DIRECT
 
   - name: 🐟 漏网之鱼
     type: select
@@ -858,21 +858,21 @@ rule-providers:
     interval: 86400
 
   # 电报信息
-  ACL_TELEGRAM:
-    type: http
-    behavior: classical
-    format: text
-    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Telegram.list
-    path: ./ruleset/acl_telegram.yaml
-    interval: 86400
+  #ACL_TELEGRAM:
+  #  type: http
+  #  behavior: classical
+  #  format: text
+  #  url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Telegram.list
+  #  path: ./ruleset/acl_telegram.yaml
+  #  interval: 86400
 
   # Telegram 专用 IP 段
-  telegramcidr:
-    type: http
-    behavior: ipcidr
-    url: https://fastly.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/telegramcidr.txt
-    path: ./ruleset/telegramcidr.yaml
-    interval: 86400
+  #telegramcidr:
+  #  type: http
+  #  behavior: ipcidr
+  #  url: https://fastly.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/telegramcidr.txt
+  #  path: ./ruleset/telegramcidr.yaml
+  #  interval: 86400
 
   # one drive
   ACL_ONEDRIVE:
@@ -911,31 +911,31 @@ rule-providers:
   #  interval: 86400
 
   # epic游戏
-  ACL_EPIC:
-    type: http
-    behavior: classical
-    format: text
-    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Epic.list
-    path: ./ruleset/acl_epic.yaml
-    interval: 86400
+  #ACL_EPIC:
+  #  type: http
+  #  behavior: classical
+  #  format: text
+  #  url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Epic.list
+  #  path: ./ruleset/acl_epic.yaml
+  #  interval: 86400
 
   # steam中国
-  ACL_STEAM_CN:
-    type: http
-    behavior: classical
-    format: text
-    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/SteamCN.list
-    path: ./ruleset/acl_steam_cn.yaml
-    interval: 86400
+  #ACL_STEAM_CN:
+  #  type: http
+  #  behavior: classical
+  #  format: text
+  #  url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/SteamCN.list
+  #  path: ./ruleset/acl_steam_cn.yaml
+  #  interval: 86400
 
   # steam游戏
-  ACL_STEAM:
-    type: http
-    behavior: classical
-    format: text
-    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Steam.list
-    path: ./ruleset/acl_steam.yaml
-    interval: 86400
+  #ACL_STEAM:
+  #  type: http
+  #  behavior: classical
+  #  format: text
+  #  url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Steam.list
+  #  path: ./ruleset/acl_steam.yaml
+  #  interval: 86400
 
   # 国外媒体
   ACL_MEDIA:
@@ -974,17 +974,17 @@ rules!:
   - RULE-SET,META_OPENAI,🤖 OPENAI
   - RULE-SET,META_FOREIGN_AI,🤖 国外AI
 
-  - RULE-SET,ACL_TELEGRAM,📲 电报信息
-  - RULE-SET,telegramcidr,📲 电报信息,no-resolve
+  #- RULE-SET,ACL_TELEGRAM,📲 电报信息
+  #- RULE-SET,telegramcidr,📲 电报信息,no-resolve
 
   - RULE-SET,ACL_ONEDRIVE,🐬 OneDrive
   #- RULE-SET,ACL_MICROSOFT,🪟 微软服务
   #- RULE-SET,META_ICLOUD,🍎 icloud
   #- RULE-SET,ACL_APPLE,🍎 苹果服务
 
-  - RULE-SET,ACL_EPIC,🎮 Epic游戏
-  - RULE-SET,ACL_STEAM_CN,🎮 Steam游戏CN
-  - RULE-SET,ACL_STEAM,🎮 Steam游戏
+  #- RULE-SET,ACL_EPIC,🎮 Epic游戏
+  #- RULE-SET,ACL_STEAM_CN,🎮 Steam游戏CN
+  #- RULE-SET,ACL_STEAM,🎮 Steam游戏
 
   - RULE-SET,ACL_MEDIA,🌍 国外媒体
   
