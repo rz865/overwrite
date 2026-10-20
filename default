@@ -703,41 +703,41 @@ proxy-groups!:
       - 🌐 其它地区
       - DIRECT
 
-  - name: 🪟 微软服务
-    type: select
-    proxies:
-      - ⚡ 自动选择
-      - 🇭🇰 香港节点
-      - 🇯🇵 日本节点
-      - 🇹🇼 台湾节点
-      - 🇸🇬 新加坡节点
-      - 🇺🇸 美国节点
-      - 🌐 其它地区
-      - DIRECT
+  #- name: 🪟 微软服务
+  #  type: select
+  #  proxies:
+  #    - ⚡ 自动选择
+  #    - 🇭🇰 香港节点
+  #    - 🇯🇵 日本节点
+  #    - 🇹🇼 台湾节点
+  #    - 🇸🇬 新加坡节点
+  #    - 🇺🇸 美国节点
+  #    - 🌐 其它地区
+  #    - DIRECT
 
-  - name: 🍎 icloud
-    type: select
-    proxies:
-      - ⚡ 自动选择
-      - 🇭🇰 香港节点
-      - 🇯🇵 日本节点
-      - 🇹🇼 台湾节点
-      - 🇸🇬 新加坡节点
-      - 🇺🇸 美国节点
-      - 🌐 其它地区
-      - DIRECT
+  #- name: 🍎 icloud
+  #  type: select
+  #  proxies:
+  #    - ⚡ 自动选择
+  #    - 🇭🇰 香港节点
+  #    - 🇯🇵 日本节点
+  #    - 🇹🇼 台湾节点
+  #    - 🇸🇬 新加坡节点
+  #    - 🇺🇸 美国节点
+  #    - 🌐 其它地区
+  #    - DIRECT
 
-  - name: 🍎 苹果服务
-    type: select
-    proxies:
-      - ⚡ 自动选择
-      - 🇭🇰 香港节点
-      - 🇯🇵 日本节点
-      - 🇹🇼 台湾节点
-      - 🇸🇬 新加坡节点
-      - 🇺🇸 美国节点
-      - 🌐 其它地区
-      - DIRECT
+  #- name: 🍎 苹果服务
+  #  type: select
+  #  proxies:
+  #    - ⚡ 自动选择
+  #    - 🇭🇰 香港节点
+  #    - 🇯🇵 日本节点
+  #    - 🇹🇼 台湾节点
+  #    - 🇸🇬 新加坡节点
+  #    - 🇺🇸 美国节点
+  #    - 🌐 其它地区
+  #    - DIRECT
 
   - name: 🎮 Epic游戏
     type: select
@@ -884,31 +884,31 @@ rule-providers:
     interval: 86400
 
   # 微软服务
-  ACL_MICROSOFT:
-    type: http
-    behavior: classical
-    format: text
-    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Microsoft.list
-    path: ./ruleset/acl_microsoft.yaml
-    interval: 86400
+  #ACL_MICROSOFT:
+  #  type: http
+  #  behavior: classical
+  #  format: text
+  #  url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Microsoft.list
+  #  path: ./ruleset/acl_microsoft.yaml
+  #  interval: 86400
 
   # icloud
-  META_ICLOUD:
-    type: http
-    behavior: domain
-    format: mrs
-    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/icloud.mrs
-    path: ./ruleset/meta_icloud.mrs
-    interval: 86400
+  #META_ICLOUD:
+  #  type: http
+  #  behavior: domain
+  #  format: mrs
+  #  url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/icloud.mrs
+  #  path: ./ruleset/meta_icloud.mrs
+  #  interval: 86400
 
   # 苹果服务
-  ACL_APPLE:
-    type: http
-    behavior: classical
-    format: text
-    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Apple.list
-    path: ./ruleset/acl_apple.yaml
-    interval: 86400
+  #ACL_APPLE:
+  #  type: http
+  #  behavior: classical
+  #  format: text
+  #  url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Apple.list
+  #  path: ./ruleset/acl_apple.yaml
+  #  interval: 86400
 
   # epic游戏
   ACL_EPIC:
@@ -937,15 +937,6 @@ rule-providers:
     path: ./ruleset/acl_steam.yaml
     interval: 86400
 
-  # 油管
-  ACL_YOUTUBE:
-    type: http
-    behavior: classical
-    format: text
-    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/YouTube.list
-    path: ./ruleset/acl_youtube.yaml
-    interval: 86400
-
   # 国外媒体
   ACL_MEDIA:
     type: http
@@ -956,13 +947,13 @@ rule-providers:
     interval: 86400
 
   # 需要代理的
-  ACL_PROXY:
-    type: http
-    behavior: classical
-    format: text
-    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyLite.list
-    path: ./ruleset/acl_proxy.yaml
-    interval: 86400
+  #ACL_PROXY:
+  #  type: http
+  #  behavior: classical
+  #  format: text
+  #  url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyLite.list
+  #  path: ./ruleset/acl_proxy.yaml
+  #  interval: 86400
 
 
 # --------------------------------------------------------------------
@@ -995,11 +986,10 @@ rules!:
   - RULE-SET,ACL_STEAM_CN,🎮 Steam游戏CN
   - RULE-SET,ACL_STEAM,🎮 Steam游戏
 
-  - RULE-SET,ACL_YOUTUBE,🌍 国外媒体  
   - RULE-SET,ACL_MEDIA,🌍 国外媒体
   
-  - RULE-SET,ACL_PROXY,🚀 节点选择
-
+  #- RULE-SET,ACL_PROXY,🚀 节点选择
+  - GEOSITE,geolocation-!cn,🚀 节点选择
   - GEOSITE,cn,DIRECT
   - GEOIP,CN,DIRECT,no-resolve
   - MATCH,🐟 漏网之鱼
