@@ -775,17 +775,17 @@ proxy-groups!:
   #    - 🌐 其它地区
   #    - DIRECT
 
-  - name: 🐟 漏网之鱼
-    type: select
-    proxies:
-      - ⚡ 自动选择
-      - 🇭🇰 香港节点
-      - 🇯🇵 日本节点
-      - 🇹🇼 台湾节点
-      - 🇸🇬 新加坡节点
-      - 🇺🇸 美国节点
-      - 🌐 其它地区
-      - DIRECT
+  #- name: 🐟 漏网之鱼
+  #  type: select
+  #  proxies:
+  #    - ⚡ 自动选择
+  #    - 🇭🇰 香港节点
+  #    - 🇯🇵 日本节点
+  #    - 🇹🇼 台湾节点
+  #    - 🇸🇬 新加坡节点
+  #    - 🇺🇸 美国节点
+  #    - 🌐 其它地区
+  #    - DIRECT
 
   - name: 🛑 广告拦截
     type: select
@@ -989,7 +989,11 @@ rules!:
   - RULE-SET,ACL_MEDIA,🌍 国外媒体
   
   #- RULE-SET,ACL_PROXY,🚀 节点选择
-  - GEOSITE,geolocation-!cn,🚀 节点选择
+  - GEOSITE,apple@cn,DIRECT
+  - GEOSITE,microsoft@cn,DIRECT
+  - GEOSITE,google@cn,DIRECT
+  - GEOSITE,steam@cn,DIRECT
+  - GEOSITE,epicgames@cn,DIRECT
   - GEOSITE,cn,DIRECT
   - GEOIP,CN,DIRECT,no-resolve
-  - MATCH,🐟 漏网之鱼
+  - MATCH,🚀 节点选择
