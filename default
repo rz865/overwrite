@@ -719,7 +719,6 @@ rules!:
   - GEOSITE,openai,🤖 OPENAI
   - GEOSITE, google-gemini,🇯🇵 日本节点
   - GEOSITE,youtube,🌍 国外媒体
-  - GEOSITE,category-entertainment,🌍 国外媒体
 
   - GEOSITE,category-ads-all,REJECT
 
