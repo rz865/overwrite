@@ -613,7 +613,7 @@ dns:
     - 223.5.5.5
   # 4. 精准策略：国内直连域名使用国内加密 DNS
   nameserver-policy!:
-    "geosite:cn":
+    "geosite:cn,apple@cn,microsoft@cn,google@cn,steam@cn,epicgames@cn":
       - https://dns.alidns.com/dns-query
       - https://doh.pub/dns-query
   # 5. fake-ip-filter必须配置：跳过 Fake-IP 的域名白名单（极为关键）
