@@ -989,7 +989,8 @@ rules!:
 
   - GEOSITE,onedrive,🚀 节点选择
   - GEOSITE,openai,🤖 OPENAI
-  - GEOSITE,category-media,🌍 国外媒体
+  - GEOSITE,youtube,🌍 国外媒体
+  - GEOSITE,category-entertainment,🌍 国外媒体
 
   #- RULE-SET,ACL_MICROSOFT,🪟 微软服务
   #- RULE-SET,META_ICLOUD,🍎 icloud
