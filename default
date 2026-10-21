@@ -707,7 +707,6 @@ proxy-groups!:
 # 4. 路由规则匹配 (rules!) - 采用感叹号 ! 清空并完全替代原静态规则
 # --------------------------------------------------------------------
 rules!:
-  - GEOSITE,category-ads-all,REJECT
   - GEOSITE,private,DIRECT
   - GEOIP,LAN,DIRECT,no-resolve
 
@@ -720,6 +719,8 @@ rules!:
   - GEOSITE,openai,🤖 OPENAI
   - GEOSITE,youtube,🌍 国外媒体
   - GEOSITE,category-entertainment,🌍 国外媒体
+
+  - GEOSITE,category-ads-all,REJECT
 
   - GEOSITE,apple@cn,DIRECT
   - GEOSITE,microsoft@cn,DIRECT
