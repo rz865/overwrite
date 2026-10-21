@@ -849,13 +849,13 @@ rule-providers:
   #  interval: 86400
   
   # OPENAI
-  META_OPENAI:
-    type: http
-    behavior: domain
-    format: mrs
-    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/openai.mrs
-    path: ./ruleset/meta_openai.mrs
-    interval: 86400
+  #META_OPENAI:
+  #  type: http
+  #  behavior: domain
+  #  format: mrs
+  #  url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/openai.mrs
+  #  path: ./ruleset/meta_openai.mrs
+  #  interval: 86400
 
   # 国外ai
   #META_FOREIGN_AI:
@@ -947,13 +947,13 @@ rule-providers:
   #  interval: 86400
 
   # 国外媒体
-  ACL_MEDIA:
-    type: http
-    behavior: classical
-    format: text
-    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyMedia.list
-    path: ./ruleset/acl_media.yaml
-    interval: 86400
+  #ACL_MEDIA:
+  #  type: http
+  #  behavior: classical
+  #  format: text
+  #  url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyMedia.list
+  #  path: ./ruleset/acl_media.yaml
+  #  interval: 86400
 
   # 需要代理的
   #ACL_PROXY:
