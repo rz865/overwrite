@@ -582,6 +582,15 @@ RESTART = false
 # ====================================================================
 [YAML]
 
+geodata-mode: true
+geodata-loader: standard  # 内存优化模式
+geo-auto-update: true            # 开启自动更新
+geo-update-interval: 72          # 更新间隔（小时）
+# 将 GEOSITE 的下载链接替换为 Loyalsoldier 的镜像
+geosite-url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat"
+# 建议同时把 GEOIP 也替换为 Loyalsoldier 的 IP 库（可选）
+geoip-url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat"
+
 # --------------------------------------------------------------------
 # 1. 基础 DNS 覆写（开启 Fake-IP 与国内外 DNS 分流）
 # --------------------------------------------------------------------
@@ -691,17 +700,17 @@ proxy-groups!:
   #    - 🌐 其它地区
   #    - DIRECT
 
-  - name: 🐬 OneDrive
-    type: select
-    proxies:
-      - ⚡ 自动选择
-      - 🇭🇰 香港节点
-      - 🇯🇵 日本节点
-      - 🇹🇼 台湾节点
-      - 🇸🇬 新加坡节点
-      - 🇺🇸 美国节点
-      - 🌐 其它地区
-      - DIRECT
+  #- name: 🐬 OneDrive
+  #  type: select
+  #  proxies:
+  #    - ⚡ 自动选择
+  #    - 🇭🇰 香港节点
+  #    - 🇯🇵 日本节点
+  #    - 🇹🇼 台湾节点
+  #    - 🇸🇬 新加坡节点
+  #    - 🇺🇸 美国节点
+  #    - 🌐 其它地区
+  #    - DIRECT
 
   #- name: 🪟 微软服务
   #  type: select
@@ -787,11 +796,11 @@ proxy-groups!:
   #    - 🌐 其它地区
   #    - DIRECT
 
-  - name: 🛑 广告拦截
-    type: select
-    proxies:
-      - REJECT
-      - DIRECT
+  #- name: 🛑 广告拦截
+  #  type: select
+  #  proxies:
+  #    - REJECT
+  #    - DIRECT
 
   # ----------------- 按常见地区自动分类分组 -----------------
   # 利用 include-all-proxies + filter 正则筛选节点名称，免去手动维护
@@ -831,13 +840,13 @@ proxy-groups!:
 # --------------------------------------------------------------------
 rule-providers:
   # 广告域名列表
-  ACL_AD:
-    type: http
-    behavior: classical
-    format: text
-    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanAD.list
-    path: ./ruleset/acl_ad.yaml
-    interval: 86400
+  #ACL_AD:
+  #  type: http
+  #  behavior: classical
+  #  format: text
+  #  url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/BanAD.list
+  #  path: ./ruleset/acl_ad.yaml
+  #  interval: 86400
   
   # OPENAI
   META_OPENAI:
@@ -849,13 +858,13 @@ rule-providers:
     interval: 86400
 
   # 国外ai
-  META_FOREIGN_AI:
-    type: http
-    behavior: domain
-    format: mrs
-    url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-!cn.mrs
-    path: ./ruleset/meta_foreign_ai.mrs
-    interval: 86400
+  #META_FOREIGN_AI:
+  #  type: http
+  #  behavior: domain
+  #  format: mrs
+  #  url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-!cn.mrs
+  #  path: ./ruleset/meta_foreign_ai.mrs
+  #  interval: 86400
 
   # 电报信息
   #ACL_TELEGRAM:
@@ -875,13 +884,13 @@ rule-providers:
   #  interval: 86400
 
   # one drive
-  ACL_ONEDRIVE:
-    type: http
-    behavior: classical
-    format: text
-    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/OneDrive.list
-    path: ./ruleset/acl_onedrive.yaml
-    interval: 86400
+  #ACL_ONEDRIVE:
+  #  type: http
+  #  behavior: classical
+  #  format: text
+  #  url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/OneDrive.list
+  #  path: ./ruleset/acl_onedrive.yaml
+  #  interval: 86400
 
   # 微软服务
   #ACL_MICROSOFT:
@@ -960,24 +969,28 @@ rule-providers:
 # 4. 路由规则匹配 (rules!) - 采用感叹号 ! 清空并完全替代原静态规则
 # --------------------------------------------------------------------
 rules!:
+  - GEOSITE,category-ads-all,REJECT
+  - GEOSITE,private,DIRECT
+  - GEOIP,LAN,DIRECT,no-resolve
+
   # 1. 自定义规则（最高优先级）
   - DOMAIN-SUFFIX,abcnode.top,DIRECT
   - DOMAIN,lp.bb4455.top,DIRECT
   - DOMAIN-KEYWORD,okx,🚀 节点选择
   - IP-CIDR,45.82.121.15/32,DIRECT,no-resolve
 
-  - GEOSITE,private,DIRECT
-  - GEOIP,LAN,DIRECT,no-resolve
+  #- RULE-SET,ACL_AD,🛑 广告拦截
 
-  - RULE-SET,ACL_AD,🛑 广告拦截
-
-  - RULE-SET,META_OPENAI,🤖 OPENAI
-  - RULE-SET,META_FOREIGN_AI,🤖 国外AI
+  #- RULE-SET,META_OPENAI,🤖 OPENAI
+  #- RULE-SET,META_FOREIGN_AI,🤖 国外AI
 
   #- RULE-SET,ACL_TELEGRAM,📲 电报信息
   #- RULE-SET,telegramcidr,📲 电报信息,no-resolve
 
-  - RULE-SET,ACL_ONEDRIVE,🐬 OneDrive
+  - GEOSITE,onedrive,🚀 节点选择
+  - GEOSITE,openai,🤖 OPENAI
+  - GEOSITE,category-media,🌍 国外媒体
+
   #- RULE-SET,ACL_MICROSOFT,🪟 微软服务
   #- RULE-SET,META_ICLOUD,🍎 icloud
   #- RULE-SET,ACL_APPLE,🍎 苹果服务
@@ -985,8 +998,6 @@ rules!:
   #- RULE-SET,ACL_EPIC,🎮 Epic游戏
   #- RULE-SET,ACL_STEAM_CN,🎮 Steam游戏CN
   #- RULE-SET,ACL_STEAM,🎮 Steam游戏
-
-  - RULE-SET,ACL_MEDIA,🌍 国外媒体
   
   #- RULE-SET,ACL_PROXY,🚀 节点选择
   - GEOSITE,apple@cn,DIRECT
