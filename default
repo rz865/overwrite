@@ -717,6 +717,7 @@ rules!:
 
   - GEOSITE,onedrive,🚀 节点选择
   - GEOSITE,openai,🤖 OPENAI
+  - GEOSITE, google-gemini,🇯🇵 日本节点
   - GEOSITE,youtube,🌍 国外媒体
   - GEOSITE,category-entertainment,🌍 国外媒体
 
