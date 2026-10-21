@@ -652,17 +652,17 @@ proxy-groups!:
       - 🌐 其它地区
       - DIRECT
 
-  - name: 🤖 国外AI
-    type: select
-    proxies:
-      - ⚡ 自动选择
-      - 🇭🇰 香港节点
-      - 🇯🇵 日本节点
-      - 🇹🇼 台湾节点
-      - 🇸🇬 新加坡节点
-      - 🇺🇸 美国节点
-      - 🌐 其它地区
-      - DIRECT
+  #- name: 🤖 国外AI
+  #  type: select
+  #  proxies:
+  #    - ⚡ 自动选择
+  #    - 🇭🇰 香港节点
+  #    - 🇯🇵 日本节点
+  #    - 🇹🇼 台湾节点
+  #    - 🇸🇬 新加坡节点
+  #    - 🇺🇸 美国节点
+  #    - 🌐 其它地区
+  #    - DIRECT
 
   #- name: 📹 YouTube
   #  type: select
