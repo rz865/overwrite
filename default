@@ -714,6 +714,8 @@ rules!:
   - DOMAIN,lp.bb4455.top,DIRECT
   - DOMAIN-KEYWORD,okx,🚀 节点选择
   - IP-CIDR,45.82.121.15/32,DIRECT,no-resolve
+  - DOMAIN-SUFFIX,bambulab.com,DIRECT
+  - DOMAIN-SUFFIX,bambulab.cn,DIRECT
 
   - GEOSITE,onedrive,🚀 节点选择
   - GEOSITE,openai,🤖 OPENAI
